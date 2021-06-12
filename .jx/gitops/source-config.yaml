@@ -9,6 +9,7 @@ spec:
     providerKind: github
     repositories:
     - name: jaja
+    - name: p-dev
     - name: php-dev
     - name: yolo
     scheduler: in-repo
