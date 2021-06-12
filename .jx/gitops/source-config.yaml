@@ -8,6 +8,7 @@ spec:
     provider: https://github.com
     providerKind: github
     repositories:
+    - name: jaja
     - name: php-dev
     - name: yolo
     scheduler: in-repo

@@ -7,6 +7,7 @@ data:
       LinkURL: null
     in_repo_config:
       enabled:
+        rohatgisanat-amagi/jaja: true
         rohatgisanat-amagi/jenkinsx: true
         rohatgisanat-amagi/php-dev: true
         rohatgisanat-amagi/yolo: true
@@ -21,6 +22,7 @@ data:
         required-if-present-contexts: null
         skip-unknown-contexts: false
       merge_method:
+        rohatgisanat-amagi/jaja: merge
         rohatgisanat-amagi/jenkinsx: merge
         rohatgisanat-amagi/php-dev: merge
         rohatgisanat-amagi/yolo: merge
@@ -35,6 +37,7 @@ data:
         - needs-rebase
         repos:
         - rohatgisanat-amagi/jenkinsx
+        - rohatgisanat-amagi/jaja
         - rohatgisanat-amagi/php-dev
         - rohatgisanat-amagi/yolo
       - labels:
@@ -47,6 +50,7 @@ data:
         - needs-rebase
         repos:
         - rohatgisanat-amagi/jenkinsx
+        - rohatgisanat-amagi/jaja
         - rohatgisanat-amagi/php-dev
         - rohatgisanat-amagi/yolo
       target_url: http://dashboard-jx.cloudport.amagi.tv
