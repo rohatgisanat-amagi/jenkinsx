@@ -7,13 +7,13 @@ metadata:
     app.kubernetes.io/component: webhook
     app.kubernetes.io/instance: default
     app.kubernetes.io/part-of: tekton-pipelines
-    pipeline.tekton.dev/release: "v0.24.1"
+    pipeline.tekton.dev/release: "v0.19.0"
     gitops.jenkins-x.io/pipeline: 'namespaces'
   annotations:
     meta.helm.sh/release-name: 'tekton-pipeline'
   namespace: tekton-pipelines
 webhooks:
-  - admissionReviewVersions: ["v1"]
+  - admissionReviewVersions: ["v1beta1", "v1"]
     clientConfig:
       service:
         name: tekton-pipelines-webhook

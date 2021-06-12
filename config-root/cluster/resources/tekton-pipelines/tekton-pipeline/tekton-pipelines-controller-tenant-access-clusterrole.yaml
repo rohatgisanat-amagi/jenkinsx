@@ -12,15 +12,14 @@ metadata:
   annotations:
     meta.helm.sh/release-name: 'tekton-pipeline'
 rules:
-  # Read-write access to create Pods, K8s Events and PVCs (for Workspaces)
   - apiGroups: [""]
-    resources: ["pods", "pods/log", "events", "persistentvolumeclaims"]
+    resources: ["pods", "pods/log", "secrets", "events", "serviceaccounts", "configmaps", "persistentvolumeclaims", "limitranges"]
     verbs: ["get", "list", "create", "update", "delete", "patch", "watch"]
-  # Read-only access to these.
-  - apiGroups: [""]
-    resources: ["configmaps", "limitranges", "secrets", "serviceaccounts"]
-    verbs: ["get", "list", "watch"]
-  # Read-write access to StatefulSets for Affinity Assistant.
+    # Unclear if this access is actually required.  Simply a hold-over from the previous
+    # incarnation of the controller's ClusterRole.
   - apiGroups: ["apps"]
-    resources: ["statefulsets"]
+    resources: ["deployments", "statefulsets"]
+    verbs: ["get", "list", "create", "update", "delete", "patch", "watch"]
+  - apiGroups: ["apps"]
+    resources: ["deployments/finalizers"]
     verbs: ["get", "list", "create", "update", "delete", "patch", "watch"]

@@ -1,18 +1,37 @@
 # Source: tekton-pipeline/templates/tekton-pipelines-webhook-deploy.yaml
+# Copyright 2020 The Tekton Authors
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app.kubernetes.io/component: webhook
-    app.kubernetes.io/instance: default
-    app.kubernetes.io/name: webhook
-    app.kubernetes.io/part-of: tekton-pipelines
-    app.kubernetes.io/version: v0.24.1
-    pipeline.tekton.dev/release: v0.24.1
-    version: v0.24.1
-    gitops.jenkins-x.io/pipeline: 'namespaces'
+  # Note: the Deployment name must be the same as the Service name specified in
+  # config/400-webhook-service.yaml. If you change this name, you must also
+  # change the value of WEBHOOK_SERVICE_NAME below.
   name: tekton-pipelines-webhook
   namespace: tekton-pipelines
+  labels:
+    app.kubernetes.io/name: webhook
+    app.kubernetes.io/component: webhook
+    app.kubernetes.io/instance: default
+    app.kubernetes.io/version: "v0.19.0"
+    app.kubernetes.io/part-of: tekton-pipelines
+    # tekton.dev/release value replaced with inputs.params.versionTag in pipeline/tekton/publish.yaml
+    pipeline.tekton.dev/release: "v0.19.0"
+    # labels below are related to istio and should not be used for resource lookup
+    version: "v0.19.0"
+    gitops.jenkins-x.io/pipeline: 'namespaces'
   annotations:
     meta.helm.sh/release-name: 'tekton-pipeline'
     wave.pusher.com/update-on-config-change: 'true'
@@ -20,50 +39,60 @@ spec:
   replicas: 1
   selector:
     matchLabels:
+      app.kubernetes.io/name: webhook
       app.kubernetes.io/component: webhook
       app.kubernetes.io/instance: default
-      app.kubernetes.io/name: webhook
       app.kubernetes.io/part-of: tekton-pipelines
   template:
     metadata:
       annotations:
         cluster-autoscaler.kubernetes.io/safe-to-evict: "false"
       labels:
-        app: tekton-pipelines-webhook
+        app.kubernetes.io/name: webhook
         app.kubernetes.io/component: webhook
         app.kubernetes.io/instance: default
-        app.kubernetes.io/name: webhook
+        app.kubernetes.io/version: "v0.19.0"
         app.kubernetes.io/part-of: tekton-pipelines
-        app.kubernetes.io/version: v0.24.1
-        pipeline.tekton.dev/release: v0.24.1
-        version: v0.24.1
+        # tekton.dev/release value replaced with inputs.params.versionTag in pipeline/tekton/publish.yaml
+        pipeline.tekton.dev/release: "v0.19.0"
+        # labels below are related to istio and should not be used for resource lookup
+        app: tekton-pipelines-webhook
+        version: "v0.19.0"
     spec:
       affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: kubernetes.io/os
-                    operator: NotIn
-                    values:
-                      - windows
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
             - podAffinityTerm:
                 labelSelector:
                   matchLabels:
+                    app.kubernetes.io/name: webhook
                     app.kubernetes.io/component: webhook
                     app.kubernetes.io/instance: default
-                    app.kubernetes.io/name: webhook
                     app.kubernetes.io/part-of: tekton-pipelines
                 topologyKey: kubernetes.io/hostname
               weight: 100
+      serviceAccountName: tekton-pipelines-webhook
       containers:
-        - env:
+        - name: webhook
+          # This is the Go import path for the binary that is containerized
+          # and substituted here.
+          image: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/webhook:v0.19.0@sha256:a7587aa62b644e000a087fda917dad005ee560ebad27950cb0c3d3b17968a109
+          # Resource request required for autoscaler to take any action for a metric
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+            limits:
+              cpu: 500m
+              memory: 500Mi
+          env:
             - name: SYSTEM_NAMESPACE
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
+            # If you are changing these names, you will also need to update
+            # the webhook's Role in 200-role.yaml to include the new
+            # values in the "configmaps" "get" rule.
             - name: CONFIG_LOGGING_NAME
               value: config-logging
             - name: CONFIG_OBSERVABILITY_NAME
@@ -76,11 +105,19 @@ spec:
               value: webhook-certs
             - name: METRICS_DOMAIN
               value: tekton.dev/pipeline
-          envFrom:
-            - secretRef:
-                name: 'jx-boot-job-env-vars'
-                optional: true
-          image: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/webhook:v0.24.1@sha256:c28b41082c4654c49baf4aa91d00b5ede9554a1ca24299bb91b6bb74c72cf3bb
+          securityContext:
+            allowPrivilegeEscalation: false
+            # User 65532 is the distroless nonroot user ID
+            runAsUser: 65532
+          ports:
+            - name: metrics
+              containerPort: 9090
+            - name: profiling
+              containerPort: 8008
+            - name: https-webhook
+              containerPort: 8443
+            - name: probes
+              containerPort: 8080
           livenessProbe:
             httpGet:
               path: /health
@@ -89,16 +126,6 @@ spec:
             initialDelaySeconds: 5
             periodSeconds: 10
             timeoutSeconds: 5
-          name: webhook
-          ports:
-            - containerPort: 9090
-              name: metrics
-            - containerPort: 8008
-              name: profiling
-            - containerPort: 8443
-              name: https-webhook
-            - containerPort: 8080
-              name: probes
           readinessProbe:
             httpGet:
               path: /readiness
@@ -107,18 +134,3 @@ spec:
             initialDelaySeconds: 5
             periodSeconds: 10
             timeoutSeconds: 5
-          resources:
-            limits:
-              cpu: 500m
-              memory: 500Mi
-            requests:
-              cpu: 100m
-              memory: 100Mi
-          securityContext:
-            allowPrivilegeEscalation: false
-            capabilities:
-              drop:
-                - all
-            runAsGroup: 65532
-            runAsUser: 65532
-      serviceAccountName: tekton-pipelines-webhook
