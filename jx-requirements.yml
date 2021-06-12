@@ -17,16 +17,21 @@ spec:
     registry: ghcr.io
   environments:
   - key: dev
+    owner: rohatgisanat-amagi
+    repository: jenkinsx
   - key: staging
   - key: production
   ingress:
-    domain: "cloudport.amagi.tv"
+    domain: cloudport.amagi.tv
     externalDNS: false
+    kind: ingress
     namespaceSubDomain: -jx.
     tls:
       email: ""
       enabled: false
       production: false
+  pipelineUser:
+    username: rohatgisanat-amagi
   repository: bucketrepo
   secretStorage: local
   vault: {}
