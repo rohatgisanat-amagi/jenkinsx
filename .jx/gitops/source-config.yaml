@@ -9,6 +9,7 @@ spec:
     providerKind: github
     repositories:
     - name: jaja
+    - name: n-dev
     - name: p-dev
     - name: php-dev
     - name: yolo

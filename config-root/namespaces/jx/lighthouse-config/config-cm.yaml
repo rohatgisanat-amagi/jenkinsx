@@ -9,6 +9,7 @@ data:
       enabled:
         rohatgisanat-amagi/jaja: true
         rohatgisanat-amagi/jenkinsx: true
+        rohatgisanat-amagi/n-dev: true
         rohatgisanat-amagi/p-dev: true
         rohatgisanat-amagi/php-dev: true
         rohatgisanat-amagi/yolo: true
@@ -25,6 +26,7 @@ data:
       merge_method:
         rohatgisanat-amagi/jaja: merge
         rohatgisanat-amagi/jenkinsx: merge
+        rohatgisanat-amagi/n-dev: merge
         rohatgisanat-amagi/p-dev: merge
         rohatgisanat-amagi/php-dev: merge
         rohatgisanat-amagi/yolo: merge
@@ -40,6 +42,7 @@ data:
         repos:
         - rohatgisanat-amagi/jenkinsx
         - rohatgisanat-amagi/jaja
+        - rohatgisanat-amagi/n-dev
         - rohatgisanat-amagi/p-dev
         - rohatgisanat-amagi/php-dev
         - rohatgisanat-amagi/yolo
@@ -54,6 +57,7 @@ data:
         repos:
         - rohatgisanat-amagi/jenkinsx
         - rohatgisanat-amagi/jaja
+        - rohatgisanat-amagi/n-dev
         - rohatgisanat-amagi/p-dev
         - rohatgisanat-amagi/php-dev
         - rohatgisanat-amagi/yolo
