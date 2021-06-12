@@ -1,0 +1,22 @@
+apiVersion: jenkins.io/v1
+kind: SourceRepository
+metadata:
+  creationTimestamp: null
+  labels:
+    owner: rohatgisanat-amagi
+    provider: github
+    repository: n-dev
+    gitops.jenkins-x.io/pipeline: 'namespaces'
+  name: rohatgisanat-amagi-n-dev
+  namespace: jx
+spec:
+  httpCloneURL: https://github.com/rohatgisanat-amagi/n-dev.git
+  org: rohatgisanat-amagi
+  provider: https://github.com
+  providerKind: github
+  providerName: github
+  repo: n-dev
+  scheduler:
+    kind: ""
+    name: in-repo
+  url: https://github.com/rohatgisanat-amagi/n-dev
