@@ -1,0 +1,10 @@
+# Source: p-dev/templates/sa.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: p-dev-p-dev
+  annotations:
+    meta.helm.sh/release-name: 'p-dev'
+  namespace: jx-production
+  labels:
+    gitops.jenkins-x.io/pipeline: 'namespaces'
