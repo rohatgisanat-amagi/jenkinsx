@@ -9,6 +9,7 @@ data:
       enabled:
         rohatgisanat-amagi/jaja: true
         rohatgisanat-amagi/jenkinsx: true
+        rohatgisanat-amagi/p-dev: true
         rohatgisanat-amagi/php-dev: true
         rohatgisanat-amagi/yolo: true
     plank: {}
@@ -24,6 +25,7 @@ data:
       merge_method:
         rohatgisanat-amagi/jaja: merge
         rohatgisanat-amagi/jenkinsx: merge
+        rohatgisanat-amagi/p-dev: merge
         rohatgisanat-amagi/php-dev: merge
         rohatgisanat-amagi/yolo: merge
       queries:
@@ -38,6 +40,7 @@ data:
         repos:
         - rohatgisanat-amagi/jenkinsx
         - rohatgisanat-amagi/jaja
+        - rohatgisanat-amagi/p-dev
         - rohatgisanat-amagi/php-dev
         - rohatgisanat-amagi/yolo
       - labels:
@@ -51,6 +54,7 @@ data:
         repos:
         - rohatgisanat-amagi/jenkinsx
         - rohatgisanat-amagi/jaja
+        - rohatgisanat-amagi/p-dev
         - rohatgisanat-amagi/php-dev
         - rohatgisanat-amagi/yolo
       target_url: http://dashboard-jx.cloudport.amagi.tv
