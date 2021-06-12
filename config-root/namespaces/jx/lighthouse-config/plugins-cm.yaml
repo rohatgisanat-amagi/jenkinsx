@@ -12,6 +12,10 @@ data:
       require_self_approval: true
     - lgtm_acts_as_approve: true
       repos:
+      - rohatgisanat-amagi/p-dev
+      require_self_approval: true
+    - lgtm_acts_as_approve: true
+      repos:
       - rohatgisanat-amagi/php-dev
       require_self_approval: true
     - lgtm_acts_as_approve: true
@@ -34,6 +38,11 @@ data:
       - endpoint: http://lighthouse-webui-plugin.jx.svc.cluster.local/lighthouse/events
         name: lighthouse-webui-plugin
       rohatgisanat-amagi/jenkinsx:
+      - endpoint: http://cd-indicators.jx.svc.cluster.local/lighthouse/events
+        name: cd-indicators
+      - endpoint: http://lighthouse-webui-plugin.jx.svc.cluster.local/lighthouse/events
+        name: lighthouse-webui-plugin
+      rohatgisanat-amagi/p-dev:
       - endpoint: http://cd-indicators.jx.svc.cluster.local/lighthouse/events
         name: cd-indicators
       - endpoint: http://lighthouse-webui-plugin.jx.svc.cluster.local/lighthouse/events
@@ -71,6 +80,22 @@ data:
       - pony
       rohatgisanat-amagi/jenkinsx:
       - config-updater
+      - approve
+      - assign
+      - blunderbuss
+      - help
+      - hold
+      - lgtm
+      - lifecycle
+      - override
+      - size
+      - trigger
+      - wip
+      - heart
+      - cat
+      - dog
+      - pony
+      rohatgisanat-amagi/p-dev:
       - approve
       - assign
       - blunderbuss
@@ -132,6 +157,9 @@ data:
       trusted_org: todo
     - repos:
       - rohatgisanat-amagi/jaja
+      trusted_org: todo
+    - repos:
+      - rohatgisanat-amagi/p-dev
       trusted_org: todo
     - repos:
       - rohatgisanat-amagi/php-dev
