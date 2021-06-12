@@ -9,6 +9,7 @@ data:
       enabled:
         rohatgisanat-amagi/jenkinsx: true
         rohatgisanat-amagi/php-dev: true
+        rohatgisanat-amagi/yolo: true
     plank: {}
     pod_namespace: jx
     prowjob_namespace: jx
@@ -22,6 +23,7 @@ data:
       merge_method:
         rohatgisanat-amagi/jenkinsx: merge
         rohatgisanat-amagi/php-dev: merge
+        rohatgisanat-amagi/yolo: merge
       queries:
       - labels:
         - approved
@@ -34,6 +36,7 @@ data:
         repos:
         - rohatgisanat-amagi/jenkinsx
         - rohatgisanat-amagi/php-dev
+        - rohatgisanat-amagi/yolo
       - labels:
         - updatebot
         missingLabels:
@@ -45,6 +48,7 @@ data:
         repos:
         - rohatgisanat-amagi/jenkinsx
         - rohatgisanat-amagi/php-dev
+        - rohatgisanat-amagi/yolo
       target_url: http://dashboard-jx.cloudport.amagi.tv
 kind: ConfigMap
 metadata:

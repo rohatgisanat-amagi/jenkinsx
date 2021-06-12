@@ -9,6 +9,7 @@ spec:
     providerKind: github
     repositories:
     - name: php-dev
+    - name: yolo
     scheduler: in-repo
   slack:
     channel: '#jenkins-x-pipelines'

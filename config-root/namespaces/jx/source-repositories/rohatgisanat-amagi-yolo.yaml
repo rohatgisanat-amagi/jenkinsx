@@ -1,0 +1,22 @@
+apiVersion: jenkins.io/v1
+kind: SourceRepository
+metadata:
+  creationTimestamp: null
+  labels:
+    owner: rohatgisanat-amagi
+    provider: github
+    repository: yolo
+    gitops.jenkins-x.io/pipeline: 'namespaces'
+  name: rohatgisanat-amagi-yolo
+  namespace: jx
+spec:
+  httpCloneURL: https://github.com/rohatgisanat-amagi/yolo.git
+  org: rohatgisanat-amagi
+  provider: https://github.com
+  providerKind: github
+  providerName: github
+  repo: yolo
+  scheduler:
+    kind: ""
+    name: in-repo
+  url: https://github.com/rohatgisanat-amagi/yolo
