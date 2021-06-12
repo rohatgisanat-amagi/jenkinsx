@@ -1,0 +1,19 @@
+# Source: p-dev/templates/ingress.yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    meta.helm.sh/release-name: 'p-dev'
+  name: p-dev
+  namespace: jx-staging
+  labels:
+    gitops.jenkins-x.io/pipeline: 'namespaces'
+spec:
+  rules:
+    - http:
+        paths:
+          - backend:
+              serviceName: p-dev
+              servicePort: 80
+      host: p-dev-jx-staging.cloudport.amagi.tv
