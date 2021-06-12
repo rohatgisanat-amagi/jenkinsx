@@ -1,0 +1,22 @@
+apiVersion: jenkins.io/v1
+kind: SourceRepository
+metadata:
+  creationTimestamp: null
+  labels:
+    owner: rohatgisanat-amagi
+    provider: github
+    repository: php-dev
+    gitops.jenkins-x.io/pipeline: 'namespaces'
+  name: rohatgisanat-amagi-php-dev
+  namespace: jx
+spec:
+  httpCloneURL: https://github.com/rohatgisanat-amagi/php-dev.git
+  org: rohatgisanat-amagi
+  provider: https://github.com
+  providerKind: github
+  providerName: github
+  repo: php-dev
+  scheduler:
+    kind: ""
+    name: in-repo
+  url: https://github.com/rohatgisanat-amagi/php-dev
