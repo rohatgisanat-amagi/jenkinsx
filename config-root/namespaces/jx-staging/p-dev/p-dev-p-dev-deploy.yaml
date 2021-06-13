@@ -5,7 +5,7 @@ metadata:
   name: p-dev-p-dev
   labels:
     draft: draft-app
-    chart: "p-dev-0.0.5"
+    chart: "p-dev-0.0.7"
     gitops.jenkins-x.io/pipeline: 'namespaces'
   annotations:
     meta.helm.sh/release-name: 'p-dev'
@@ -25,11 +25,11 @@ spec:
       serviceAccountName: p-dev-p-dev
       containers:
         - name: p-dev
-          image: "ghcr.io/rohatgisanat-amagi/p-dev:0.0.5"
+          image: "ghcr.io/rohatgisanat-amagi/p-dev:0.0.7"
           imagePullPolicy: IfNotPresent
           env:
             - name: VERSION
-              value: 0.0.5
+              value: 0.0.7
           envFrom: null
           ports:
             - name: http
