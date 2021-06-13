@@ -223,3 +223,21 @@
     repositoryUrl: http://bucketrepo.jx.svc.cluster.local/bucketrepo/charts
     resourcePath: config-root/namespaces/jx-staging/n-dev
     version: 0.0.2
+- namespace: jx-production
+  path: helmfiles/jx-production/helmfile.yaml
+  releases:
+  - apiVersion: v1
+    appVersion: 0.0.3
+    applicationUrl: http://n-dev-jx-production.cloudport.amagi.tv
+    description: A Helm chart for Kubernetes
+    firstDeployed: "2021-06-13T00:24:08Z"
+    icon: https://raw.githubusercontent.com/cdfoundation/artwork/master/jenkinsx/icon/color/jenkinsx-icon-color.png
+    ingresses:
+    - name: n-dev
+      url: http://n-dev-jx-production.cloudport.amagi.tv
+    lastDeployed: "2021-06-13T00:24:08Z"
+    name: n-dev
+    repositoryName: dev
+    repositoryUrl: http://bucketrepo.jx.svc.cluster.local/bucketrepo/charts
+    resourcePath: config-root/namespaces/jx-production/n-dev
+    version: 0.0.3
