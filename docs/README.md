@@ -95,6 +95,15 @@
 	      <td><a href='http://yolo-jx-staging.cloudport.amagi.tv'>view</a></td>
 	      <td></td>
 	    </tr>
+    <tr>
+		      <td colspan='4'><h3>jx-production</h3></td>
+		    </tr>
+	    <tr>
+	      <td><a href='' title='A Helm chart for Kubernetes'> <img src='https://raw.githubusercontent.com/cdfoundation/artwork/master/jenkinsx/icon/color/jenkinsx-icon-color.png' width='24px' height='24px'> p-dev </a></td>
+	      <td>0.0.7</td>
+	      <td><a href='http://p-dev-jx-production.cloudport.amagi.tv'>view</a></td>
+	      <td></td>
+	    </tr>
 
   </tbody>
 </table>
