@@ -147,6 +147,132 @@
     appVersion: 3.0.0
     description: Jenkins X next gen cloud CI / CD platform for Kubernetes
     firstDeployed: "2021-06-12T13:00:34Z"
+130
+      name: lolimjake
+131
+    - email: ianhoegen@gmail.com
+132
+      name: ihoegen
+133
+    - email: jonathan_phan@comcast.com
+134
+      name: jonnydawg
+135
+    - email: joshulyne_park@comcast.com
+136
+      name: joshulyne
+137
+    name: kuberhealthy
+138
+    repositoryName: kuberhealthy
+139
+    repositoryUrl: https://kuberhealthy.github.io/kuberhealthy/helm-repos
+140
+    resourcePath: config-root/namespaces/kuberhealthy/kuberhealthy
+141
+    sources:
+142
+    - https://github.com/Comcast/kuberhealthy
+143
+    - https://github.com/Comcast/kuberhealthy/tree/master/deploy/helm/kuberhealthy
+144
+    type: application
+145
+    version: "64"
+146
+  - apiVersion: v2
+147
+    appVersion: 3.0.0
+148
+    description: Jenkins X next gen cloud CI / CD platform for Kubernetes
+149
+    firstDeployed: "2021-06-12T13:00:34Z"
+150
+    home: https://jenkins-x.io/
+151
+    icon: https://jenkins-x.github.io/jenkins-x-website/img/profile.png
+152
+    lastDeployed: "2021-06-12T13:00:34Z"
+153
+    maintainers:
+154
+    - email: jenkins-x@googlegroups.com
+155
+      name: Jenkins X Team
+156
+    name: jx-kh-check
+157
+    repositoryName: jx3
+158
+    repositoryUrl: https://storage.googleapis.com/jenkinsxio/charts
+159
+    resourcePath: config-root/namespaces/kuberhealthy/jx-kh-check
+160
+    sources:
+161
+    - https://github.com/jenkins-x-plugins/jx-kh-check
+162
+    version: 0.0.68
+163
+- namespace: tekton-pipelines
+164
+  path: helmfiles/tekton-pipelines/helmfile.yaml
+165
+  releases:
+166
+  - apiVersion: v1
+167
+    appVersion: 0.19.0
+168
+    description: A Helm chart for Tekton Pipelines
+169
+    firstDeployed: "2021-06-12T13:32:10Z"
+170
+    home: https://github.com/cdfoundation/tekton-helm-chart
+171
+    icon: https://avatars2.githubusercontent.com/u/47602533
+172
+    lastDeployed: "2021-06-12T13:32:10Z"
+173
+    name: tekton-pipeline
+174
+    repositoryName: cdf
+175
+    repositoryUrl: https://cdfoundation.github.io/tekton-helm-chart
+176
+    resourcePath: config-root/namespaces/tekton-pipelines/tekton-pipeline
+177
+    version: 0.19.1
+178
+- namespace: jx-staging
+179
+  path: helmfiles/jx-staging/helmfile.yaml
+180
+  releases:
+181
+  - apiVersion: v1
+182
+    appVersion: 0.0.5
+183
+    applicationUrl: http://p-dev-jx-staging.cloudport.amagi.tv
+184
+    description: A Helm chart for Kubernetes
+185
+    firstDeployed: "2021-06-12T23:30:55Z"
+186
+    icon: https://raw.githubusercontent.com/cdfoundation/artwork/master/jenkinsx/icon/color/jenkinsx-icon-color.png
+187
+    ingresses:
+188
+    - name: p-dev
+189
+      url: http://p-dev-jx-staging.cloudport.amagi.tv
+190
+    lastDeployed: "2021-06-12T23:30:55Z"
+191
+    name: p-dev
+192
+    repositoryName: dev
     home: https://jenkins-x.io/
     icon: https://jenkins-x.github.io/jenkins-x-website/img/profile.png
     lastDeployed: "2021-06-12T13:00:34Z"
