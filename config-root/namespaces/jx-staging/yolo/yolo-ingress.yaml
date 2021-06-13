@@ -1,0 +1,19 @@
+# Source: yolo/templates/ingress.yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    meta.helm.sh/release-name: 'yolo'
+  name: yolo
+  namespace: jx-staging
+  labels:
+    gitops.jenkins-x.io/pipeline: 'namespaces'
+spec:
+  rules:
+    - http:
+        paths:
+          - backend:
+              serviceName: yolo
+              servicePort: 80
+      host: yolo-jx-staging.cloudport.amagi.tv

@@ -1,0 +1,20 @@
+# Source: yolo/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: yolo
+  labels:
+    chart: "yolo-0.0.1"
+    gitops.jenkins-x.io/pipeline: 'namespaces'
+  annotations:
+    meta.helm.sh/release-name: 'yolo'
+  namespace: jx-staging
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 8080
+      protocol: TCP
+      name: http
+  selector:
+    app: yolo-yolo

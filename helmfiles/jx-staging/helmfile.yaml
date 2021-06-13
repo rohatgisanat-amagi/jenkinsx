@@ -1,0 +1,27 @@
+filepath: ""
+environments:
+  default:
+    values:
+    - jx-values.yaml
+namespace: jx-staging
+repositories:
+- name: dev
+  url: http://bucketrepo.jx.svc.cluster.local/bucketrepo/charts
+releases:
+- chart: dev/p-dev
+  version: 0.0.7
+  name: p-dev
+  values:
+  - jx-values.yaml
+- chart: dev/yolo
+  version: 0.0.1
+  name: yolo
+  values:
+  - jx-values.yaml
+- chart: dev/n-dev
+  version: 0.0.3
+  name: n-dev
+  values:
+  - jx-values.yaml
+templates: {}
+renderedvalues: {}
