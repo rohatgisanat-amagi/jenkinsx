@@ -18,5 +18,10 @@ releases:
   name: yolo
   values:
   - jx-values.yaml
+- chart: dev/n-dev
+  version: 0.0.2
+  name: n-dev
+  values:
+  - jx-values.yaml
 templates: {}
 renderedvalues: {}
