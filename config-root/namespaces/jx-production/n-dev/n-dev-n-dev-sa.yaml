@@ -1,0 +1,10 @@
+# Source: n-dev/templates/sa.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: n-dev-n-dev
+  annotations:
+    meta.helm.sh/release-name: 'n-dev'
+  namespace: jx-production
+  labels:
+    gitops.jenkins-x.io/pipeline: 'namespaces'
