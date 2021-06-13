@@ -1,0 +1,10 @@
+# Source: yolo/templates/sa.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: yolo-yolo
+  annotations:
+    meta.helm.sh/release-name: 'yolo'
+  namespace: jx-production
+  labels:
+    gitops.jenkins-x.io/pipeline: 'namespaces'
