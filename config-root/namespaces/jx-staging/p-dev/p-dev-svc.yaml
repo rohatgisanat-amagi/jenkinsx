@@ -4,7 +4,7 @@ kind: Service
 metadata:
   name: p-dev
   labels:
-    chart: "p-dev-0.0.5"
+    chart: "p-dev-0.0.7"
     gitops.jenkins-x.io/pipeline: 'namespaces'
   annotations:
     meta.helm.sh/release-name: 'p-dev'
