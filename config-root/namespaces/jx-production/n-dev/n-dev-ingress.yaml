@@ -1,0 +1,19 @@
+# Source: n-dev/templates/ingress.yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    meta.helm.sh/release-name: 'n-dev'
+  name: n-dev
+  namespace: jx-production
+  labels:
+    gitops.jenkins-x.io/pipeline: 'namespaces'
+spec:
+  rules:
+    - http:
+        paths:
+          - backend:
+              serviceName: n-dev
+              servicePort: 80
+      host: n-dev-jx-production.cloudport.amagi.tv
