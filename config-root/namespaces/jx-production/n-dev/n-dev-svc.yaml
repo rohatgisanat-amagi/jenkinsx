@@ -4,11 +4,11 @@ kind: Service
 metadata:
   name: n-dev
   labels:
-    chart: "n-dev-0.0.9"
+    chart: "n-dev-0.0.11"
     gitops.jenkins-x.io/pipeline: 'namespaces'
   annotations:
     meta.helm.sh/release-name: 'n-dev'
-  namespace: jx-staging
+  namespace: jx-production
 spec:
   type: ClusterIP
   ports:
