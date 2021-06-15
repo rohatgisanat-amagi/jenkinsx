@@ -5,7 +5,7 @@ metadata:
   name: n-dev-n-dev
   labels:
     draft: draft-app
-    chart: "n-dev-0.0.8"
+    chart: "n-dev-0.0.9"
     gitops.jenkins-x.io/pipeline: 'namespaces'
   annotations:
     meta.helm.sh/release-name: 'n-dev'
@@ -25,11 +25,11 @@ spec:
       serviceAccountName: n-dev-n-dev
       containers:
         - name: n-dev
-          image: "ghcr.io/rohatgisanat-amagi/n-dev:0.0.8"
+          image: "ghcr.io/rohatgisanat-amagi/n-dev:0.0.9"
           imagePullPolicy: IfNotPresent
           env:
             - name: VERSION
-              value: 0.0.8
+              value: 0.0.9
           envFrom: null
           ports:
             - name: http
