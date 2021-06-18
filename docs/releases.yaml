@@ -209,17 +209,17 @@
     resourcePath: config-root/namespaces/jx-staging/yolo
     version: 0.0.1
   - apiVersion: v1
-    appVersion: 0.0.12
+    appVersion: 0.0.13
     applicationUrl: http://n-dev-jx-staging.cloudport.amagi.tv
     description: A Helm chart for Kubernetes
-    firstDeployed: "2021-06-15T23:48:46Z"
+    firstDeployed: "2021-06-18T07:23:20Z"
     icon: https://raw.githubusercontent.com/cdfoundation/artwork/master/jenkinsx/icon/color/jenkinsx-icon-color.png
     ingresses:
     - name: n-dev
       url: http://n-dev-jx-staging.cloudport.amagi.tv
-    lastDeployed: "2021-06-15T23:48:46Z"
+    lastDeployed: "2021-06-18T07:23:20Z"
     name: n-dev
     repositoryName: dev
     repositoryUrl: http://bucketrepo.jx.svc.cluster.local/bucketrepo/charts
     resourcePath: config-root/namespaces/jx-staging/n-dev
-    version: 0.0.12
+    version: 0.0.13
